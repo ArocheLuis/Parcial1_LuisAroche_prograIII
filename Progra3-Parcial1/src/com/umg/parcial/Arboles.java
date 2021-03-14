@@ -47,12 +47,37 @@ class ArbolBinario {
 	public void agregar(Scanner sc) {
 		System.out.println("INGRESE VALOR");
 		//escriba codigo para ingresar
+		int valor= sc.nextInt();
+		raiz.Insertarnodo(valor);
 	}
 	
-	
+	/*public void PreOrden(Nodo nodo) {
+		if (nodo != null) {
+			
+			System.out.println(" " + nodo.value);
+			PreOrden(nodo.getIzq());
+			PreOrden(nodo.getDer());
+		}
+			
+	}*/
+	  public void PreOrden (Nodo nodo)
+	    {
+	        if (nodo != null)
+	        {
+	            System.out.println(nodo.value);
+	            PreOrden(nodo.getIzq());
+	            PreOrden(nodo.getDer());
+	        }
+
+	    }
 	
 	public void mostrar() {
 		//escriba codigo para mostrar
+		if (raiz==null) {
+			
+		}else {
+			PreOrden(raiz);
+		}
 	}
 }
 
@@ -89,5 +114,21 @@ class Nodo{
 	public void setDer(Nodo der) {		
 		this.der = der;
 	}
+	public void Insertarnodo (int dato){
+		if(dato < value){
+			if (izq == null)
+				izq = new Nodo(dato);
+			else
+				izq.Insertarnodo(dato);
+		}
+		else{
+			if (dato > value){
+				if (der == null)
+					der = new Nodo(dato);
+				else
+					der.Insertarnodo(dato);
+			}
+		}
+  }
 	
 }
